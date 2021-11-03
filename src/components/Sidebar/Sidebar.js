@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import APIURL from '../../helpers/environment.js'
 const CreateItem = (props) => {
     const [name, setName] = useState('');
     const [price, setPrice] = useState(0);
@@ -11,7 +11,7 @@ const CreateItem = (props) => {
     // }, [])
     const postItem = (e) => {
         e.preventDefault();
-        let url = 'http://localhost:3001/item/create';
+        let url = `${APIURL}/item/create`;
         fetch(url, {
             method: 'POST',
             body: JSON.stringify({

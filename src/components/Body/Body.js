@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import APIURL from '../../helpers/environment.js'
 const Body = (props) => {
     const [items, setItems] = useState([])
     const getAllItems = (e) => {
         e.preventDefault();
-        let url = 'http://localhost:3001/item/'
+        let url = `${APIURL}/item/`
         fetch(url, {
             method: 'GET',
             headers: {

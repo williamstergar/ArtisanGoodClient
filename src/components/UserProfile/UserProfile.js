@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import ItemDelete from './ItemDelete';
+import APIURL from '../../helpers/environment.js'
 const UserProfile = (props) => {
     const [items, setItems] = useState([])
     const getMyItems = (e) => {
         e.preventDefault();
-        let url = 'http://localhost:3001/item/mine'
+        let url = `${APIURL}/item/mine`
         fetch(url, {
             method: 'GET',
             headers: {

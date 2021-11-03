@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import APIURL from '../../helpers/environment.js'
 import { Form, Label, Input, FormGroup, Button } from 'reactstrap'
 const EditEmail = (props) => {
     const [editEmail, setEditEmail] = useState("");
     const updateEmail = (event) => {
         event.preventDefault();
-        fetch('http://localhost:3001/user/updateemail', {
+        fetch(`${APIURL}/user/updateemail`, {
             method: 'PUT',
             body: JSON.stringify({user: {email: editEmail}}),
             headers: new Headers({

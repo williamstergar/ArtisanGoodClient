@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
+import APIURL from '../../helpers/environment.js'
 
 const ItemDelete = (props) => {
     const handleDelete = (e, id) => {
         e.preventDefault()
         console.log('Delete Function')
-        fetch (`http://localhost:3001/item/delete/${id}`, {
+        fetch (`${APIURL}/item/delete/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

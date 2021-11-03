@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import APIURL from '../../helpers/environment.js'
 import './Login.css';
 const Auth = (props) => {
     const [email, setEmail] = useState('');
@@ -29,8 +30,8 @@ const Auth = (props) => {
                   }
             }
             let url = login ?
-            'http://localhost:3001/user/login' :
-            'http://localhost:3001/user/register';
+            `${APIURL}/user/login` :
+            `${APIURL}/user/register`;
             fetch(url, {
                 method: 'POST',
                 body: JSON.stringify(reqBody),
