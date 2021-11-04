@@ -1,23 +1,20 @@
-import React, {useState} from 'react';
+import React, {useState} from 'react'; 
 import APIURL from '../../../helpers/environment.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './ItemCreate.css'
 import { Form, Label, Input, FormGroup, Button } from 'reactstrap'
-const CreateItem = (props) => {
+const CreateItem = (props) => { // create item function, arrays below consisting of the characteristics of our items
     const [name, setName] = useState('');
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState('');
     const [availability, setAvailability] = useState(true);
     const [photoURL, setPhotoURL] = useState('');
-    // useEffect(() => {
-    //     console.log(props);
-    // }, [])
-    const postItem = (e) => {
-        e.preventDefault();
-        let url = `${APIURL}/item/create`;
+    const postItem = (e) => { // postItem function
+        e.preventDefault(); // preventing our page from always refreshing
+        let url = `${APIURL}/item/create`; // string interpolated fetch URL from server side
         fetch(url, {
-            method: 'POST',
-            body: JSON.stringify({
+            method: 'POST', // post method
+            body: JSON.stringify({ // converting our JS object to a JSON string
                 name: name,
                 price: price,
                 description: description,
@@ -26,10 +23,10 @@ const CreateItem = (props) => {
             }),
             headers: new Headers({
                 'Content-Type' : 'application/json',
-                'Authorization' : props.sessionToken
+                'Authorization' : props.sessionToken // login and authentication, how we validate the token ( the correct user creating only their items )
             })
         }).then((res) => res.json())
-        .then((data) => {
+        .then((data) => { // calling to the API
             console.log(data);
             setName('');
             setPrice(0);
@@ -40,7 +37,7 @@ const CreateItem = (props) => {
         })
     }
     
-    const obj = {
+    const obj = { 
         color: 'whitesmoke', 
         // fontSize: '23px',
         // fontFamily: 
@@ -69,7 +66,7 @@ const CreateItem = (props) => {
             <Input type='text' value={photoURL} onChange={(e) => setPhotoURL(e.target.value)}  placeholder='Item Image'/>
             */}
             <br/>
-            <Button style={{ backgroundColor: 'transparent' }} type='submit' onClick={postItem}>Submit</Button>
+            <Button style={{ backgroundColor: 'transparent' }} type='submit' onClick={postItem}>Submit</Button> // button to create the item
         </Form>
     </div>
     )
