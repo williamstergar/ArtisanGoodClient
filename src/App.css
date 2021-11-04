@@ -1,6 +1,7 @@
 body {
-  background-image: linear-gradient(#d3cce3, #e9e4f0);
-  color: gray;
+  color: whitesmoke;
   padding: 15px;
+  font-family: 'Kaushan Script', cursive;
+  font-size: 10px;
 }
 

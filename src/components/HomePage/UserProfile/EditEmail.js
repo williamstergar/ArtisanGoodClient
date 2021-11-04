@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import APIURL from '../../helpers/environment.js'
+import APIURL from '../../../helpers/environment.js'
 import { Form, Label, Input, FormGroup, Button } from 'reactstrap'
 const EditEmail = (props) => {
     const [editEmail, setEditEmail] = useState("");
@@ -17,14 +17,19 @@ const EditEmail = (props) => {
             console.log("Update Success!");
         })
     }
+
+    const obj = {
+        color: 'whitesmoke',
+        backgroundColor: 'transparent'
+    }
     return (
-    <div>
+        <div className= 'login' style={{textAlign: 'center', margin: 'auto', width: "15%", paddingLeft: "8px", paddingTop: "6px", paddingBottom: "6px"}}>
         <Form onSubmit={updateEmail}>
             <FormGroup>
-                <Label htmlFor="email">Edit Email:</Label>
+                <Label htmlFor="email" style={obj}>Edit Email:</Label>
                 <Input name="email" value={editEmail} onChange={(e) => setEditEmail(e.target.value)}/>
             </FormGroup>
-            <Button type="submit">Update your email!</Button>
+            <Button type="submit" style={obj}>Update your email!</Button>
         </Form>
     </div>
     )

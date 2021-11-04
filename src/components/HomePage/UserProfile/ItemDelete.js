@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import APIURL from '../../helpers/environment.js'
+import APIURL from '../../../helpers/environment.js'
 
 const ItemDelete = (props) => {
     const handleDelete = (e, id) => {

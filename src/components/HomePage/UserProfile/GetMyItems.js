@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import APIURL from '../../../helpers/environment.js'
 import ItemDelete from './ItemDelete';
-import APIURL from '../../helpers/environment.js'
+import EditItem from './ItemEdit';
 const UserProfile = (props) => {
     const [items, setItems] = useState([])
     const getMyItems = (e) => {
@@ -19,13 +20,18 @@ const UserProfile = (props) => {
             })
             .catch(err => console.log(err))
     }
+
+    const obj = {
+        color: 'white'
+    }
+
     return (
-        <div>
-            <h1>My Profile</h1>
+        <div className= 'login' style={{textAlign: 'center', margin: 'auto', width: "30%", paddingLeft: "8px", paddingTop: "6px", paddingBottom: "6px"}}>
+            <h2 style={obj} >My Profile</h2>
             <button onClick={getMyItems}>My Items</button>
             {items.map(item => {
                 return (
-                    <div>
+                    <div style ={{ color: 'white' }}>
                         {item.name}
                         <br/>
                         {item.price}
@@ -36,11 +42,19 @@ const UserProfile = (props) => {
                         <br/>
                         {item.photoURL}
                         <ItemDelete id={item.id} sessionToken={props.sessionToken} />
+                        <EditItem entryID={item.id} sessionToken={props.sessionToken}
+                        name={props.name}
+                        price={props.price}
+                        description={props.description}
+                        availability={props.availability}
+                        photoURL={props.photoURL}
+                        />
                     </div>
                 )
             })}
         </div>
     )
 }
-
 export default UserProfile;
+
+// ${APIURL} 

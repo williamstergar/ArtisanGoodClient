@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { Form, Label, Input, FormGroup, Button } from 'reactstrap'
 import APIURL from '../../helpers/environment.js'
 import './Login.css';
 const Auth = (props) => {
@@ -49,22 +50,32 @@ const Auth = (props) => {
             .catch(err => console.log(err))
     }
     return(
-        <div>
-            <form>
-                <button onClick={loginToggle}>Login / Register </button>
-                <br />
+        <div className= 'title' style={{textAlign: 'center', marginTop:'30px', color: 'white', Zindex: '1'}}><h1>Artisan Lovers Cafe</h1>
+        <div className= 'login' style={{textAlign: 'center', margin:'auto', marginTop:'10%', width: '15%', color: 'white'}}>
+            <Form>
+                <FormGroup>
                 <h1>{title()}</h1>
-                <label htmlFor="email">Email:</label>
+                <Label htmlFor="email">Email:</Label>
                 <br />
-                <input type='text' id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <Input type='text' id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 <br />
-                <label htmlFor="password">Password:</label>
+                <Label htmlFor="password">Password:</Label>
                 <br />
-                <input type='password' id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <Input type='password' id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <br />
-                <button type="submit" onClick={handleSubmit}>Submit</button>
-            </form>
-        </div>
+                <Button style={{backgroundColor: 'transparent'}}onClick={loginToggle}>Login / Register</Button>
+                <br />
+                <br />
+                <Button style={{backgroundColor: 'transparent'}} type="submit" onClick={handleSubmit}>Submit</Button>
+                </FormGroup>
+            </Form>
+            </div>
+            </div>
     )
 }
 export default Auth;
+
+
+// import APIURL from '../../helpers/environment.js'
+// `${APIURL}/user/login` :
+// `${APIURL}/user/register`;

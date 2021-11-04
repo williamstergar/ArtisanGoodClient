@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import APIURL from '../../helpers/environment.js'
+import APIURL from '../../../helpers/environment.js'
 const Body = (props) => {
     const [items, setItems] = useState([])
     const getAllItems = (e) => {
@@ -18,13 +18,18 @@ const Body = (props) => {
             })
             .catch(err => console.log(err))
     }
+
+    const obj = {
+        color: 'white'
+    }
+
     return (
-        <div>
-            <h1>Body</h1>
-            <button onClick={getAllItems}>Fetch</button>
+        <div className= 'login' style={{textAlign: 'center', margin: 'auto', width: "30%", paddingLeft: "8px", paddingTop: "6px", paddingBottom: "6px"}}>
+            <h2 style={obj}> View All Items </h2>
+            <button style={{ backgroundColor: 'transparent', color: 'white' }} onClick={getAllItems}> Get All Items </button>
             {items.map(item => {
                 return (
-                    <div>
+                    <div style ={{ color: 'white' }}>
                         {item.name}
                         <br/>
                         {item.price}
